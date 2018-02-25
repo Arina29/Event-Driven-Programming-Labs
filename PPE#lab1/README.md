@@ -5,7 +5,7 @@
 ### Purpose of the laboratory:
 Gain knowledge about basics of event-driven programming about main elements and possibilities of Win32 API. To understand how message processing, window class and window procedure works.
 
-###Laboratory Work requirements
+### Laboratory Work requirements
 #### Mandatory Objectives:
 * Choose a Programming Style Guideline that you'll follow
 * Create a Windows application
@@ -35,4 +35,4 @@ An interesting task was to make buttons, text entries and static text boxes with
 ![alt text](result2.png "result2")
 
 #### Conclusion
-In this laboratory work, I gained the basic knowledge how to make a windows application and how to handle the basic elements such as MessageBoxes, Button, Texts, Text Entries, I learned how the messages are processed how we can add some new functionalities to our application using WM_COMMAND, WM_PAINT and other standart messages and how the bitmap images can be processed.
+In this laboratory work, I gained the basic knowledge how to make a windows application and how to handle the basic elements such as MessageBoxes, buttons, texts, text entries, I learned how the messages are processed how we can add some new functionalities to our application using WM_COMMAND, WM_PAINT and other standart messages and how the bitmap images can be processed.
