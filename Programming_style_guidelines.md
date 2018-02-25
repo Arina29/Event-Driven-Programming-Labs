@@ -7,19 +7,9 @@
  ### Identations:
  * Tabs of size 4 
  * In case of if with one statement don't use braces
-     if(condition)
-         //code
+
  * Use braces for all switch cases
-  switch(msg)
-  {
-          case1:
-          {
-          //code
-          }
-  }
+
  * Use 'Allman' indentation and braces style:
  if(condition)
- {
-        //code
- }
- *
+
