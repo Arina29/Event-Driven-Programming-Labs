@@ -7,15 +7,12 @@
 #define GENERATE 3
 #define STATIC_TEXT 4
 #define NAME_FIELD 5
-#define IDT_TIMER1 6
-
-const int ID_TIMER = 1;
 
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 void CenterWindow(HWND);
 void AddControls(HWND);
 
-bool bg_swap = true, resized = false;
+bool bgSwap = true, resized = false;
 HWND hName, hSurname, hAge, hOut, hButton2, hText;
 HWND hNameButton, hSurnameButton, hAgeButton, hGenerateButton;
 
@@ -103,7 +100,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
                 HBITMAP hBackgroundImg;
                 HDC hMemDC = CreateCompatibleDC(hdc);
                 GetClientRect(hwnd, &rect);
-                if(bg_swap)
+                if(bgSwap)
                     hBackgroundImg = (HBITMAP)LoadImage(NULL, "circles.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
                 else
                     hBackgroundImg = (HBITMAP)LoadImage(NULL, "blue_circles.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
@@ -176,7 +173,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
                 }
                 if(LOWORD(wParam) == ID_CANCEL)
                 {
-                     bg_swap = !bg_swap;
+                     bgSwap = !bgSwap;
                      RedrawWindow(hwnd, NULL, NULL, RDW_INVALIDATE | RDW_ERASE | RDW_ERASENOW);
                 }
                 break;
