@@ -7,7 +7,10 @@
  ### Identations:
  * Tabs of size 4 
  * In case of if with one statement don't use braces
-
+'''c++
+if(condition)
+    \\code
+'''
  * Use braces for all switch cases
 
  * Use 'Allman' indentation and braces style:
