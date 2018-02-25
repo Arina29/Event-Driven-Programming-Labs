@@ -1,0 +1,25 @@
+# Programming style guideline 
+ * The code is written in CamelCase, using Hungarian notation.
+ * Variable and function names should be meaningfull
+ * variable and function names uses camelCase starting with a lowercase letter
+ * #define's uses SNAKE_CASE and all letters caps
+ 
+ ### Identations:
+ * Tabs of size 4 
+ * In case of if with one statement don't use braces
+     if(condition)
+         //code
+ * Use braces for all switch cases
+  switch(msg)
+  {
+          case1:
+          {
+          //code
+          }
+  }
+ * Use 'Allman' indentation and braces style:
+ if(condition)
+ {
+        //code
+ }
+ *
