@@ -2,10 +2,10 @@
 ## Laboratory work Nr. 1
 ### Title : Window. Window handling. Basic window’s form elements
 
-1. ### Purpose of the laboratory:
+### Purpose of the laboratory:
 Gain knowledge about basics of event-driven programming about main elements and possibilities of Win32 API. To understand how message processing, window class and window procedure works.
 
-2. ###Laboratory Work requirements
+###Laboratory Work requirements
 #### Mandatory Objectives:
 * Choose a Programming Style Guideline that you'll follow
 * Create a Windows application
@@ -20,7 +20,7 @@ Gain knowledge about basics of event-driven programming about main elements and 
 * Change behavior of different window actions (at least 3). For ex.: on clicking close button, move window to a random location on display's working space (1 pt)
 * Write your own PSG (you can take existent one and modify it) and argue why it is better (for you) (1 pt)
 
-3. Laboratory work implementation
+Laboratory work implementation
 #### The functionality:
 * A button (with my own style) that changes the background image.
 * Text (with my own style) that represents the name of the application and flow in the center of the window on resize
