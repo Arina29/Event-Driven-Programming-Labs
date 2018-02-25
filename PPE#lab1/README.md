@@ -31,7 +31,7 @@ Laboratory work implementation
 
 An interesting task was to make buttons, text entries and static text boxes with our own style, due to this objectives I found out how to use WM_CLTCOLOREDIT, WM_CLTCOLORSTATIC and WM_DRAWITEM messages, also it was  interesting for me how music and background images can be added, so I used PlaySoundW() and BitBlt() functions.
 #### Result
-![alt text](PPE#lab1/result1.png "result1")
+![alt text](result1.png "result1")
 ![alt text](result2.png "result2")
 
 #### Conclusion
