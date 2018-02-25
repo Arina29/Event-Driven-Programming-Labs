@@ -31,7 +31,7 @@ Laboratory work implementation
 
 An interesting task was to make buttons, text entries and static text boxes with our own style, due to this objectives I found out how to use WM_CLTCOLOREDIT, WM_CLTCOLORSTATIC and WM_DRAWITEM messages, also it was  interesting for me how music and background images can be added, so I used PlaySoundW() and BitBlt() functions.
 #### Result
-![Alt text] (result1.png)
+![Alt text](Event-Driven-Programming-Labs/PPE#lab1/result1.png)
 
 #### Conclusion
 In this laboratory work, I gained the basic knowledge how to make a windows application and how to handle the basic elements such as MessageBoxes, Button, Texts, Text Entries, I learned how the messages are processed how we can add some new functionalities to our application using WM_COMMAND, WM_PAINT and other standart messages and how the bitmap images can be processed.
