@@ -1,5 +1,6 @@
 # Programming style guideline 
-The programming styled use in laboratory works will coincide with [this one] (https://users.physics.ox.ac.uk/~Steane/cpp_help/mycppstyle.htm) with some little changes.
+The programming style used in laboratory works will coincide with 
+[this one](https://users.physics.ox.ac.uk/~Steane/cpp_help/mycppstyle.htm) ,but with some little changes.
  * The code is written in CamelCase, using Hungarian notation.
  * Variable and function names should be meaningfull
  * variable and function names uses camelCase starting with a lowercase letter
