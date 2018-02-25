@@ -12,7 +12,20 @@ if(condition)
     \\code
 ```
  * Use braces for all switch cases
-
+ ```c++
+ switch(msg)
+ {
+     case 1:
+     {
+     \\code
+     }
+ }
+```
  * Use 'Allman' indentation and braces style:
+ ```c++
  if(condition)
+ {
+     \\code
+ }
+ ```
 
