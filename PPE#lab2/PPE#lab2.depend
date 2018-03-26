@@ -1,0 +1,22 @@
+# depslib dependency file v1.0
+1522107573 source:f:\univer\wp\wp#lab2\ppe#lab2\main.cpp
+	<windows.h>
+	<mmsystem.h>
+	<stdlib.h>
+	<stdio.h>
+	"resource.h"
+
+1521971963 source:f:\univer\wp\wp#lab2\ppe#lab2\dlgbox.rc
+	"resource.h"
+	"afxres.h"
+
+1522094170 f:\univer\wp\wp#lab2\ppe#lab2\resource.h
+
+1522109394 source:f:\univer\wp\wp#lab2\ppe#lab2\winprocfunctions.cpp
+	<windows.h>
+	"winProcFunctions.h"
+	"resource.h"
+
+1522109393 f:\univer\wp\wp#lab2\ppe#lab2\winprocfunctions.h
+	<windows.h>
+
