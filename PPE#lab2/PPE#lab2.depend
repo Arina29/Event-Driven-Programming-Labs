@@ -20,3 +20,24 @@
 1522109393 f:\univer\wp\wp#lab2\ppe#lab2\winprocfunctions.h
 	<windows.h>
 
+1521971963 source:f:\univer\wp\wp#lab1\ppe#lab2\dlgbox.rc
+	"resource.h"
+	"afxres.h"
+
+1522094170 f:\univer\wp\wp#lab1\ppe#lab2\resource.h
+
+1522262058 source:f:\univer\wp\wp#lab1\ppe#lab2\main.cpp
+	<windows.h>
+	<mmsystem.h>
+	<stdlib.h>
+	<stdio.h>
+	"resource.h"
+
+1522261155 f:\univer\wp\wp#lab1\ppe#lab2\lab2.h
+	<windows.h>
+
+1522261051 source:f:\univer\wp\wp#lab1\ppe#lab2\lab2.cpp
+	<windows.h>
+	"lab2.h"
+	"resource.h"
+

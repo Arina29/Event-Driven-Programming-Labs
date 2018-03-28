@@ -41,6 +41,7 @@
 		<Unit filename="dlgBox.RC">
 			<Option compilerVar="CPP" />
 		</Unit>
+		<Unit filename="lab2.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="menu.ico" />
 		<Unit filename="resource.h" />

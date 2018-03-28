@@ -3,23 +3,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "resource.h"
-
-LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
-BOOL CALLBACK DlgProc(HWND, UINT, WPARAM, LPARAM);
-void RegisterDlgBox(HINSTANCE);
-void DisplayDlgBox(HWND);
-void CenterWindow(HWND);
-void AddControls(HWND);
-void AddMenus(HWND);
-void CreateControls(HWND);
-void MoveButtonsOnResize();
-
-bool bg_swap = true, resized = false, colorDlg = false;
-static int cxClient, cyClient;
-int xNewPos, newPos[2], i, idFocus = 0;
-HWND hButton2, hDlg, hText, scrollWin[2], hDeleteButton, hNameEdit;
-HWND hWidthScroll, hSurnameButton, hAgeButton, hGenerateButton, hListBox;
-COLORREF newColor;
+#include "lab2.h"
 
 int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR args, int ncmdshow)
 {
@@ -69,7 +53,6 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 	RECT rect = {0};
 	int width, height;
 
-
 	LPDRAWITEMSTRUCT pdis = {0};
 	static HFONT hFont = {0};
 
@@ -110,55 +93,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
             case WM_HSCROLL:
             {
-                int winSize[2] = {0, 0};
-                i = GetWindowLong ((HWND) lParam, GWL_ID) ;
-
-                newPos[i] = GetScrollPos(scrollWin[i], SB_CTL);
-                    switch(LOWORD(wParam))
-                    {
-                    case SB_LINELEFT:
-                        winSize[i] = -1;
-                        newPos[i]--;
-                        break;
-
-                    case SB_LINERIGHT:
-                        winSize[i] ++;
-                        newPos[i] ++;
-                        break;
-
-                    case SB_THUMBPOSITION:
-                    case SB_THUMBTRACK:
-
-                        if(HIWORD(wParam) - newPos[i] < 0)
-                            winSize[i] -= HIWORD(wParam);
-                        else if (HIWORD(wParam) - newPos[i] == 0)
-                            winSize[i] = 0;
-                        else
-                            winSize[i] = HIWORD(wParam);
-
-                        newPos[i] = HIWORD(wParam);
-                        break;
-
-                    case SB_PAGELEFT:
-                        winSize[i] = -1;
-                        newPos[i] --;
-                        break;
-
-                    case SB_PAGERIGHT:
-                        winSize[i] ++;
-                        newPos[i] ++;
-                        break;
-
-                    default:
-                        return FALSE;
-                    }
-                    SetScrollPos(scrollWin[i], SB_CTL, newPos[i], TRUE);
-                    GetWindowRect(hwnd, &rect);
-                    if(i == 0)
-                        SetWindowPos(hwnd, HWND_TOP, 0, 0, rect.right - rect.left + winSize[i], rect.bottom - rect.top, SWP_NOMOVE);
-                    else
-                        SetWindowPos(hwnd, HWND_TOP, 0, 0, rect.right - rect.left, rect.bottom - rect.top+winSize[i], SWP_NOMOVE);
-                return 0;
+                addScrollBar(hwnd, lParam, wParam);
             }
 
             case WM_CTLCOLORSTATIC:
@@ -188,76 +123,14 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
             case WM_COMMAND:
             {
-                if(LOWORD(wParam) == ID_CANCEL)
-                {
-                    hDlg = CreateDialog(GetModuleHandle(NULL), MAKEINTRESOURCE(IDD_TOOLBAR), hwnd, (DLGPROC)DlgProc);
-                    if(hDlg != NULL)
-                        ShowWindow(hDlg, SW_SHOW);
-                    else
-                        MessageBox(hwnd, "CreateDialog returned NULL", "Warning!", MB_OK | MB_ICONINFORMATION);
-                }
-                if(LOWORD(wParam) == IDM_FILE_NEW)
-                    PlaySoundW(L"bg_music.wav", NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
-
-                if(LOWORD(wParam) == IDM_HELP_ABOUT)
-                    MessageBox(hwnd, "Oops, you can't do it", "New File", MB_OK);
-
-                if(LOWORD(wParam) == IDM_FILE_OPEN)
-                    hDlg = CreateDialog(GetModuleHandle(NULL), MAKEINTRESOURCE(IDD_TOOLBAR), hwnd, (DLGPROC)DlgProc);
-
-                if(LOWORD(wParam) == IDM_FILE_QUIT)
-                    DestroyWindow(hwnd);
-
-                if(LOWORD(wParam) == GENERATE)
-                {
-                    char name[50], out[50];
-                    GetWindowText(hNameEdit, name, 50);
-                    strcpy(out, name);
-                    strcat(out, "\r\n");
-
-                    int setListText = SendDlgItemMessage(hwnd, LIST_BOX, LB_ADDSTRING, 0, (LPARAM)out);
-                }
-
-                if(LOWORD(wParam) == LIST_BOX)
-                {
-                  if (HIWORD(wParam) == LBN_SELCHANGE)
-                    {
-                      MessageBox(hwnd, "You clicked a list box item", "List Box Item", MB_OK);
-                    }
-                }
-
-                if(LOWORD(wParam) == BTN_DELETE)
-                {
-                    int item = SendDlgItemMessage(hwnd, LIST_BOX, LB_GETCURSEL, 0, 0);
-                    SendDlgItemMessage(hwnd, LIST_BOX, LB_DELETESTRING, item, 0);
-                }
+               getCommand(hwnd, wParam);
                 break;
             }
 
             case WM_KEYDOWN:
             {
-                switch(wParam)
-                {
-                case VK_DOWN:
-                {
-                    if(GetKeyState(VK_CONTROL) & IS_PRESSED)
-                    {
-                        newColor = newColor == RGB(0, 255, 58) ? RGB(255, 0, 0) : RGB(0, 255, 58);
-                        InvalidateRect(hwnd, NULL, TRUE);
-                    }
-
-                    break;
-                }
-                case VK_UP:
-                {
-                    if(GetKeyState(VK_SHIFT) & IS_PRESSED)
-                    {
-                        MessageBox(hwnd, "Student: Chirosca Ariadna, FAF-161", "Info", MB_OK);
-                    }
-                    break;
-                }
-            }
-            break;
+                AddKeyControl(hwnd, wParam);
+                break;
             }
 
             case WM_DRAWITEM:
@@ -455,5 +328,129 @@ void MoveButtonsOnResize()
     for(i = 0; i < 2; i++)
     {
         MoveWindow(scrollWin[i], cxClient/2, cyClient/2 - 200 +(i*50), 225, 25, TRUE);
+    }
+}
+
+void getCommand(HWND hwnd, WPARAM wParam)
+{
+     if(LOWORD(wParam) == ID_CANCEL)
+    {
+        hDlg = CreateDialog(GetModuleHandle(NULL), MAKEINTRESOURCE(IDD_TOOLBAR), hwnd, (DLGPROC)DlgProc);
+        if(hDlg != NULL)
+            ShowWindow(hDlg, SW_SHOW);
+        else
+            MessageBox(hwnd, "CreateDialog returned NULL", "Warning!", MB_OK | MB_ICONINFORMATION);
+        }
+        if(LOWORD(wParam) == IDM_FILE_NEW)
+            PlaySoundW(L"bg_music.wav", NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
+
+        if(LOWORD(wParam) == IDM_HELP_ABOUT)
+            MessageBox(hwnd, "Oops, you can't do it", "New File", MB_OK);
+
+        if(LOWORD(wParam) == IDM_FILE_OPEN)
+            hDlg = CreateDialog(GetModuleHandle(NULL), MAKEINTRESOURCE(IDD_TOOLBAR), hwnd, (DLGPROC)DlgProc);
+
+        if(LOWORD(wParam) == IDM_FILE_QUIT)
+            DestroyWindow(hwnd);
+
+        if(LOWORD(wParam) == GENERATE)
+        {
+            char name[50], out[50];
+            GetWindowText(hNameEdit, name, 50);
+            strcpy(out, name);
+            strcat(out, "\r\n");
+
+            int setListText = SendDlgItemMessage(hwnd, LIST_BOX, LB_ADDSTRING, 0, (LPARAM)out);
+        }
+
+        if(LOWORD(wParam) == LIST_BOX)
+        {
+            if (HIWORD(wParam) == LBN_SELCHANGE)
+            {
+                MessageBox(hwnd, "You clicked a list box item", "List Box Item", MB_OK);
+            }
+                }
+                if(LOWORD(wParam) == BTN_DELETE)
+                {
+                    int item = SendDlgItemMessage(hwnd, LIST_BOX, LB_GETCURSEL, 0, 0);
+                    SendDlgItemMessage(hwnd, LIST_BOX, LB_DELETESTRING, item, 0);
+                }
+
+}
+
+bool addScrollBar(HWND hwnd, LPARAM lParam, WPARAM wParam)
+{
+    RECT rect = {0};
+    int winSize[2] = {0, 0};
+    i = GetWindowLong ((HWND) lParam, GWL_ID) ;
+
+    newPos[i] = GetScrollPos(scrollWin[i], SB_CTL);
+    switch(LOWORD(wParam))
+    {
+        case SB_LINELEFT:
+            winSize[i] = -1;
+            newPos[i]--;
+            break;
+
+        case SB_LINERIGHT:
+            winSize[i] ++;
+            newPos[i] ++;
+            break;
+
+        case SB_THUMBPOSITION:
+        case SB_THUMBTRACK:
+            if(HIWORD(wParam) - newPos[i] < 0)
+                winSize[i] -= HIWORD(wParam);
+            else if (HIWORD(wParam) - newPos[i] == 0)
+                winSize[i] = 0;
+            else
+                winSize[i] = HIWORD(wParam);
+
+            newPos[i] = HIWORD(wParam);
+            break;
+
+        case SB_PAGELEFT:
+            winSize[i] = -1;
+            newPos[i] --;
+            break;
+
+        case SB_PAGERIGHT:
+            winSize[i] ++;
+            newPos[i] ++;
+            break;
+
+        default:
+            return FALSE;
+        }
+    SetScrollPos(scrollWin[i], SB_CTL, newPos[i], TRUE);
+    GetWindowRect(hwnd, &rect);
+    if(i == 0)
+        SetWindowPos(hwnd, HWND_TOP, 0, 0, rect.right - rect.left + winSize[i], rect.bottom - rect.top, SWP_NOMOVE);
+    else
+        SetWindowPos(hwnd, HWND_TOP, 0, 0, rect.right - rect.left, rect.bottom - rect.top+winSize[i], SWP_NOMOVE);
+    return 0;
+}
+
+void AddKeyControl(HWND hwnd, WPARAM wParam)
+{
+    switch(wParam)
+    {
+        case VK_DOWN:
+        {
+            if(GetKeyState(VK_CONTROL) & IS_PRESSED)
+            {
+                newColor = newColor == RGB(0, 255, 58) ? RGB(255, 0, 0) : RGB(0, 255, 58);
+                InvalidateRect(hwnd, NULL, TRUE);
+            }
+            break;
+        }
+        case VK_UP:
+        {
+            if(GetKeyState(VK_SHIFT) & IS_PRESSED)
+            {
+                MessageBox(hwnd, "Student: Chirosca Ariadna, FAF-161", "Info", MB_OK);
+            }
+            break;
+        }
     }
 }
