@@ -22,8 +22,8 @@ _Advanced Form Elements. Child Windows. Basics of Working With Keyboard._
   - Help(About) displays a Message Box
  * In dialog Box there is a Scroll Bar that changes window background
  * Hook keyboard input
-  - Ctrl + Down arrow  changes text color
-  - Shift + Up arrow displays a MessageBox
+  - [Ctrl + Down arrow]  changes text color
+  - [Shift + Up arrow] displays a MessageBox
  * There is a list box , you can add some text to it, you can delete some items, when you click on an item , a message box is displayed
  * The application has 2 scroll bars in the main wondow, responsible for window size
  * It uses the hand cursor and a custom icon.
