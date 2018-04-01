@@ -12,6 +12,7 @@ _Advanced Form Elements. Child Windows. Basics of Working With Keyboard._
 * Add a listbox and attach some events when any element is accessed (clicked) (2 pt)
 * Add 2 scroll bars that will manage main window size or position
 * Customize your application by adding an icon and using different cursor in application (1 pt)
+* Use a scroll bar to scroll through application working space. Scroll should appear only when necessary (eg. when window width is smaller than 300px) (1 pt)
 
 ## Result
 * When "Change Background" button is clicked, a dialog box appears
@@ -20,6 +21,7 @@ _Advanced Form Elements. Child Windows. Basics of Working With Keyboard._
   - File(Open) opens the dialog box
   - File(Quit) exits the application
   - Help(About) displays a Message Box
+  - View(Toolbar) a Color picker window appears (PS just appears :D)
  * In dialog Box there is a Scroll Bar that changes window background
  * Hook keyboard input
   - [Ctrl + Down arrow]  changes text color
@@ -27,6 +29,7 @@ _Advanced Form Elements. Child Windows. Basics of Working With Keyboard._
  * There is a list box , you can add some text to it, you can delete some items, when you click on an item , a message box is displayed
  * The application has 2 scroll bars in the main wondow, responsible for window size
  * It uses the hand cursor and a custom icon.
+ * A scroll bar to the listbox is added and a vertical scroll bar appears in the main window when it is smaller than 400px. 
   
   ## Conclusion
   In this laboratory work, I've learned some new basic features used in event driven programming as, dialog boxes, list boxes, menus, scroll bars,
