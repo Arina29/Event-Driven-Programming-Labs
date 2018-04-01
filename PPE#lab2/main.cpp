@@ -4,6 +4,9 @@
 #include <stdio.h>
 #include "resource.h"
 #include "lab2.h"
+#include <commdlg.h>
+
+
 
 int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR args, int ncmdshow)
 {
@@ -66,6 +69,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
                 AddControls(hwnd);
                 AddMenus(hwnd);
                 newColor = RGB(0, 255, 58);
+                NUMLINES = rect.bottom - rect.top;
                 break;
             }
 
@@ -73,11 +77,18 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
             {
                 cxClient = LOWORD(lParam);
                 cyClient = HIWORD(lParam);
+
                 if(resized)
                 {
                     MoveButtonsOnResize();
                 }
                 resized = true;
+                if(cyClient < 400)
+                {
+                    SetScrollRange (hwnd, SB_VERT, 0, NUMLINES, FALSE) ;
+                    SetScrollPos   (hwnd, SB_VERT, iVscrollPos, TRUE) ;
+                }
+
                 break;
             }
 
@@ -85,15 +96,22 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
             {
                 char buffer[100];
                 hdc = BeginPaint(hwnd, &ps);
+
                 if(colorDlg == true)
                     DeleteObject ((HGDIOBJ) SetClassLong (hwnd, GCL_HBRBACKGROUND,(LONG) CreateSolidBrush(RGB(0 , xNewPos, 0))));
                 EndPaint(hwnd, &ps);
+
                 break;
             }
 
             case WM_HSCROLL:
             {
                 addScrollBar(hwnd, lParam, wParam);
+            }
+
+            case WM_VSCROLL:
+            {
+                addVerticalScroll(hwnd, lParam, wParam, cyClient);
             }
 
             case WM_CTLCOLORSTATIC:
@@ -147,7 +165,6 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
                     SetBkMode(pdis->hDC, TRANSPARENT);
                     DrawText(pdis->hDC, "Change Background", -1, &pdis->rcItem, DT_CENTER|DT_SINGLELINE|DT_VCENTER);
                 }
-
                 break;
             }
 
@@ -168,6 +185,22 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
                 return DefWindowProc(hwnd, msg, wParam, lParam);
         }
     return 0;
+}
+
+int WINAPI AddTools ()
+{
+ static CHOOSECOLOR cc ;
+ static COLORREF crCustColors[16] ;
+     cc.lStructSize = sizeof (CHOOSECOLOR) ;
+     cc.hwndOwner = NULL ;
+     cc.hInstance = NULL ;
+     cc.rgbResult = RGB (0x80, 0x80, 0x80) ;
+     cc.lpCustColors = crCustColors ;
+     cc.Flags = CC_RGBINIT | CC_FULLOPEN ;
+     cc.lCustData = 0 ;
+     cc.lpfnHook = NULL ;
+     cc.lpTemplateName = NULL ;
+ return ChooseColor (&cc) ;
 }
 
 BOOL CALLBACK DlgProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
@@ -260,7 +293,7 @@ void CenterWindow(HWND hwnd)
 
 void AddControls(HWND hwnd)
 {
-    hListBox = CreateWindowW(L"LISTBOX", NULL, WS_CHILD | WS_VISIBLE | WS_BORDER | LBS_NOTIFY, 250, 325, 300, 200, hwnd, (HMENU)LIST_BOX, NULL, NULL);
+    hListBox = CreateWindowW(L"LISTBOX", NULL, WS_CHILD | WS_VISIBLE | WS_BORDER | LBS_NOTIFY | WS_HSCROLL | WS_VSCROLL, 250, 325, 300, 200, hwnd, (HMENU)LIST_BOX, NULL, NULL);
 
     hButton2 = CreateWindowW(L"Button", L"Change Background", WS_VISIBLE | WS_CHILD | BS_OWNERDRAW, 570, 490, 200, 50, hwnd, (HMENU)ID_CANCEL, NULL, NULL);
 
@@ -352,6 +385,9 @@ void getCommand(HWND hwnd, WPARAM wParam)
 
         if(LOWORD(wParam) == IDM_FILE_QUIT)
             DestroyWindow(hwnd);
+
+        if (LOWORD(wParam)==IDM_VIEW_TOOLBAR)
+            AddTools();
 
         if(LOWORD(wParam) == GENERATE)
         {
@@ -453,4 +489,48 @@ void AddKeyControl(HWND hwnd, WPARAM wParam)
             break;
         }
     }
+}
+
+bool addVerticalScroll(HWND hwnd, LPARAM lParam, WPARAM wParam, int cyClient)
+{
+    static int cxChar, cxCaps, cyChar;
+    TEXTMETRIC tm ;
+
+    HDC hdc = GetDC (hwnd) ;
+        GetTextMetrics (hdc, &tm) ;
+        cxChar = tm.tmAveCharWidth ;
+        cxCaps = (tm.tmPitchAndFamily & 1 ? 3 : 2) * cxChar / 2 ;
+        cyChar = tm.tmHeight + tm.tmExternalLeading ;
+    ReleaseDC (hwnd, hdc) ;
+
+    SetScrollRange(hwnd, SB_VERT, 0, cyClient - 1, FALSE);
+    switch (LOWORD (wParam))
+    {    SetScrollPos (hwnd, SB_VERT, iVscrollPos, TRUE) ;
+
+        case SB_LINEUP:
+            iVscrollPos -= 1;
+            break ;
+        case SB_LINEDOWN:
+            iVscrollPos += 1 ;
+            break ;
+        case SB_PAGEUP:
+            iVscrollPos -= cyClient / cyChar;
+            break ;
+        case SB_PAGEDOWN:
+            iVscrollPos += cyClient / cyChar ;
+            break ;
+        case SB_THUMBPOSITION:
+            iVscrollPos = HIWORD (wParam) ;
+            break ;
+        default :
+            break ;
+    }
+
+    iVscrollPos = max(0, min(iVscrollPos, NUMLINES - 1));
+    if (iVscrollPos != GetScrollPos (hwnd, SB_VERT))
+    {
+        SetScrollPos (hwnd, SB_VERT, iVscrollPos, TRUE) ;
+        InvalidateRect (hwnd, NULL, TRUE) ;
+    }
+    return 0;
 }

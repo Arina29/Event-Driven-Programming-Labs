@@ -20,4 +20,10 @@
 #define MIN_LABEL 6
 #define MAX_LABEL 7
 #define VAR_LABEL 8
+#define SCROLL_BAR_VERT_MOVE 9
+#define SCROLL_BAR_VERT_HEIGHT 10
+
+
+
+
 
