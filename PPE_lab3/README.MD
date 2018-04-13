@@ -29,7 +29,7 @@ Implemented in C#
  * And the last combo box is for filling mode, figure can be filled, unfilled or with the gradient
  * Clear button used for clearing the screen
  * Save button used for saving your image to a bitmap image in your computer;
-## Total: All mandatory objectives + 10 points (Bonus Objectives)
+#### Total: All mandatory objectives + 10 points (Bonus Objectives)
   
   ## Conclusion
   In this laboratory work, I learned to draw Bezier curves, to write to a bitmap image, to work with GDI primitives and to use Window Forms. Working with C# instead of C++ saved me a lot of time. Finally I obtained a paint like program, that can be used to paint images, like that illustrated below.
