@@ -28,7 +28,7 @@ Implemented in C#
 (you can draw bezier curve with the mouse, it uses 4 points)
  * And the last combo box is for filling mode, figure can be filled, unfilled or with the gradient
  * Clear button used for clearing the screen
- * Save button used for saving your image to a bitmap image in your computer;
+ * Save button used for saving your image to a bitmap ;
 #### Total: All mandatory objectives + 10 points (Bonus Objectives)
   
   ## Conclusion
