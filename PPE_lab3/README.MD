@@ -29,10 +29,10 @@ Implemented in C#
  * And the last combo box is for filling mode, figure can be filled, unfilled or with the gradient
  * Clear button used for clearing the screen
  * Save button used for saving your image to a bitmap image in your computer;
-## Total: All mandatory objectives + 8 bonus point
+## Total: All mandatory objectives + 8 bonus points
   
   ## Conclusion
   In this laboratory work, I learned to draw Bezier curves, to write to a bitmap image, to work with GDI primitives and to use Window Forms. Working with C# instead of C++ saved me a lot of time. A little bit challenging was to make the pannel to zoom in and out, finally it doesn't work as I wanted to(drawing were not scaled or it were erased), so I decided to remove it from my project.In the end I obtained a paint like application, that will be developed in the future.
-  ![night](Results\night.bmp)
+  ![night](Event-Driven-Programming-Labs/PPE_lab3/Results/night.bmp)
   
   
