@@ -9,8 +9,8 @@ _Basics of Working with Mouse. GDI Primitives. Bezier Curve._
 * Draw 2 different objects using mouse
 
 ## Bonus Objectives
-<mark>brvscdvfb</mark>
-* Draw a custom bitmap image (1 pt) 
+
+[x] Draw a custom bitmap image (1 pt) 
 * Add a switch (button, select list...) that will change mouse ability to draw objects (2 pt)
 * Draw a Bezier curve using mouse (1 pt)
 * Fill an object with a gradient (1 pt)
