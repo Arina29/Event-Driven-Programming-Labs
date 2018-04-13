@@ -15,7 +15,7 @@ _Basics of Working with Mouse. GDI Primitives. Bezier Curve._
 - [x] Draw a Bezier curve using mouse (1 pt)
 - [x] Fill an object with a gradient (1 pt)
 - [ ] Delete objects using mouse clicking (2 pt)
-- [x]Use mouse as an eraser of:
+- [x] Use mouse as an eraser of:
  - a fixed width (1 pt)
  - a adjustable width (2 pt)
 - [x] Zoom in and out application working area using keyboard (2 pt)
