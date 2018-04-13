@@ -146,6 +146,20 @@ namespace WindowsFormsApp1
         {
             panel1.Invalidate();
         }
+        float zoom = 1;
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.W)
+                zoom = 2f;
+
+            if (e.KeyCode == Keys.S)
+                zoom = 0.5f;
+
+            panel1.Scale(zoom);
+            graph.ScaleTransform(zoom, zoom);
+            
+
+        }
 
         private void btnImage_Click(object sender, EventArgs e)
         {

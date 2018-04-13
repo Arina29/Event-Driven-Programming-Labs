@@ -141,6 +141,7 @@
             this.KeyPreview = true;
             this.Name = "Form1";
             this.Text = "LaboratoryWork#3";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
