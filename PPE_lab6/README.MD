@@ -26,6 +26,6 @@ Implemented in C#
 
   ## Conclusion
 In this laboratory work, I converted first and second laboratories to C#. It was easier to implement all those tasks in C# than in C++, since 
- it is pure object-oriented and takes advantage of the .NET Framework.
+ it is pure object-oriented, takes advantage of the .NET Framework and has a simplified syntax. To open a dialog box you don't have to make another window procedure or you don't need to use resources in order to make a little menu. So, finally I obtained the next result:
 
 ![screen1](Results/screen1.png)
