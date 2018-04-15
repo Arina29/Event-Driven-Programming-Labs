@@ -19,10 +19,10 @@ Implemented in C#
 * you can Delete an item from the box or delete all information from the box
 * On button click you can change background image
 * Also there is a menu, where you can:
-- Start music
-- Save all information from listbox into a file
-- quit the application 
-- To get help
+1. Start music
+2. Save all information from listbox into a file
+3. quit the application 
+4. To get help
 
   ## Conclusion
 In this laboratory work, I converted first and second laboratories to C#. It was easier to implement all those tasks in C# than in C++, since 
