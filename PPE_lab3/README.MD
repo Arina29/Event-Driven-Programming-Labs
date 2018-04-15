@@ -15,10 +15,10 @@ _Basics of Working with Mouse. GDI Primitives. Bezier Curve._
 - [x] Draw a Bezier curve using mouse (1 pt)
 - [x] Fill an object with a gradient (1 pt)
 - [ ] Delete objects using mouse clicking (2 pt)
-- [x]Use mouse as an eraser of:
+- [x] Use mouse as an eraser of:
  - a fixed width (1 pt)
  - a adjustable width (2 pt)
-- [ ] Zoom in and out application working area using keyboard (2 pt)
+- [x] Zoom in and out application working area using keyboard (2 pt)
 
 ## Result
 Implemented in C#
@@ -28,11 +28,11 @@ Implemented in C#
 (you can draw bezier curve with the mouse, it uses 4 points)
  * And the last combo box is for filling mode, figure can be filled, unfilled or with the gradient
  * Clear button used for clearing the screen
- * Save button used for saving your image to a bitmap image in your computer;
-## Total: All mandatory objectives + 8 bonus points
+ * Save button used for saving your image to a bitmap ;
+#### Total: All mandatory objectives + 10 points (Bonus Objectives)
   
   ## Conclusion
-  In this laboratory work, I learned to draw Bezier curves, to write to a bitmap image, to work with GDI primitives and to use Window Forms. Working with C# instead of C++ saved me a lot of time. A little bit challenging was to make the pannel to zoom in and out, finally it doesn't work as I wanted to(drawing were not scaled or it were erased), so I decided to remove it from my project.In the end I obtained a paint like application, that will be developed in the future.
+  In this laboratory work, I learned to draw Bezier curves, to write to a bitmap image, to work with GDI primitives and to use Window Forms. Working with C# instead of C++ saved me a lot of time. Finally I obtained a paint like program, that can be used to paint images, like that illustrated below.
   ![night](Results/night.bmp)
   
   
