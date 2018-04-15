@@ -17,7 +17,7 @@ Implemented in C#
 * When balls interacts with the window boundaries they change their movement direction and color(2-6p)
 * Balls velocity can be changed with mouse wheel (2pt)
 * When you press space the nyan cat appears  and she is moving to the right
-* Using arrows you can move up and down the nyan cat
+* Using arrows you can move up and down the nyan cat (she will always appear,for example if you move her down out of the window, she will appear on the top)
 * When nyan cat and balls collide, the balls dissapear.
 * Flickering problem was solved by using double - buffer.(2pt)
 
