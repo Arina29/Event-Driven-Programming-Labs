@@ -6,7 +6,7 @@ _Developing using C#._
 - [x] Create an Win32 or WinRT application using C#
 - [x] Convert a previous laboratory work to C#
 ## Bonus Objectives
-- [x]Create a report (3pt)
+- [x] Create a report (3pt)
 - [] Use WinRT (3pt)
 - [] Create a pull request with a meaningful fix/feature to 5th WP laboratory work of your colleagues. It should be a project in which you were not involved. (4pt)
 
