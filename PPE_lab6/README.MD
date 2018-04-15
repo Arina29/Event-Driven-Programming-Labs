@@ -13,7 +13,7 @@ _Developing using C#._
 ## Result
 Implemented in C#
 * I used winForms
-* There are 4 fields where you can eneter your name, surname, hobby and profession
+* There are 4 fields where you can enter your name, surname, hobby and profession
 * You can add your information to the list Box
 * In the lisbox will appear only your name and surname, when you will click on it, all your enetered information will appear on the right
 * you can Delete an item from the box or delete all information from the box
