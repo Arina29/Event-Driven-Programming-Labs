@@ -37,7 +37,7 @@ this.DoubleBuffered = true;
 In this laboratory work, we learned to make some animation using timer and a little bit of our creativity. So, I noticed that animations
 are created, by redrawing the window every timer tick, so in order to make the balls move , we have to redraw them every time in a
 different position or if we use sprites, every tick we have to put in the picture box another sprite.
-At the beginning of the work, I met the flickering problem, in this case you should use double buffering, because when you use two buffers
+At the beginning of the work, I met the flickering problem, in this case I used double buffering, because when you use two buffers
 while an image /frame is shown a separate frame is buffered to be shown next. 
 
 ![screen1](Results/screen2.png)
