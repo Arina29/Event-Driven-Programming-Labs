@@ -29,6 +29,7 @@ Implemented in C#
  * And the last combo box is for filling mode, figure can be filled, unfilled or with the gradient
  * Clear button used for clearing the screen
  * Save button used for saving your image to a bitmap ;
+ * You can zoom in and out by pressing "W" and "S"
 #### Total: All mandatory objectives + 10 points (Bonus Objectives)
   
   ## Conclusion
